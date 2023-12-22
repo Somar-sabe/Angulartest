@@ -6,7 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+   
+      "generate-guard": "echo \"import { Injectable } from '@angular/core';\nimport { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';\nimport { Observable } from 'rxjs';\n\n@Injectable({ providedIn: 'root' })\nexport class AuthGuard implements CanActivate {\n  isLoggedIn: boolean = false; // Replace this with your actual authentication logic\n\n  constructor(private router: Router) {}\n\n  canActivate(\n    next: ActivatedRouteSnapshot,\n    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {\n    if (this.isLoggedIn) {\n      return true; // User is authenticated, allow access to the route\n    } else {\n      this.router.navigate(['/login']); // User is not authenticated, redirect to the login page\n      return false;\n    }\n  }\n}\" > src/app/auth.guard.ts"
+    
+    
   },
   "private": true,
   "dependencies": {

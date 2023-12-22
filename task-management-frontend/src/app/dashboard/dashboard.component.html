@@ -1,0 +1,21 @@
+<div class="dashboard">
+    <h2>Task Dashboard</h2>
+    
+    <div *ngIf="tasks.length === 0; else taskList">
+      <p>No tasks available.</p>
+    </div>
+  
+    <ng-template #taskList>
+      <ul class="task-list">
+        <li *ngFor="let task of tasks">
+          <div class="task-details">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description }}</p>
+            <p>Assignee: {{ task.assignee }}</p>
+            <!-- Add other task details as needed -->
+          </div>
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+  

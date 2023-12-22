@@ -1,0 +1,22 @@
+<!-- Display tasks -->
+<div *ngFor="let task of tasks">
+    <p>{{ task.title }}</p>
+    <p>{{ task.description }}</p>
+    <button (click)="editTask(task)">Edit</button>
+    <button (click)="deleteTask(task.id)">Delete</button>
+  </div>
+  
+  <!-- Create Task Form -->
+  <form *ngIf="showCreateForm" (submit)="createTask()">
+    <input type="text" placeholder="Title" required [(ngModel)]="newTask.title">
+    <input type="text" placeholder="Description" required [(ngModel)]="newTask.description">
+    <button type="submit">Create Task</button>
+  </form>
+  
+  <!-- Edit Task Form -->
+  <form *ngIf="showEditForm" (submit)="updateTask()">
+    <input type="text" placeholder="Title" required [(ngModel)]="editedTask.title">
+    <input type="text" placeholder="Description" required [(ngModel)]="editedTask.description">
+    <button type="submit">Update Task</button>
+  </form>
+  
